@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neon Clone</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/font-awesome.css" />
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+    <link
+      href="https://db.onlinewebfonts.com/c/f255af1b0fe123133e8350c3ca1a09dc?family=Flowee"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="assets/css/responsive.css" />
+    <link rel="stylesheet" href="assets/css/customize.css" />
+    <link rel="stylesheet" href="assets/css/whatwedo.css" />
+    <link rel="stylesheet" href="assets/css/story.css" />
+    <link rel="stylesheet" href="assets/css/fonts.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <style>
+    @font-face {
+      font-family: Eurostile_Extended;
+      src: url(../fonts/eurostile_extended_black.ttf);
+    }
+    @import url("https://fonts.googleapis.com/css2?family=Afacad&family=Aguafina+Script&family=Arizonia&family=Asset&family=Black+And+White+Picture&family=Bungee+Shade&family=Chakra+Petch:wght@300&family=Clicker+Script&family=Dawning+of+a+New+Day&family=Dr+Sugiyama&family=Freehand&family=Frijole&family=Great+Vibes&family=Handjet:wght@100&family=Handlee&family=Herr+Von+Muellerhoff&family=Italianno&family=Jim+Nightshade&family=Long+Cang&family=Love+Light&family=Lovers+Quarrel&family=Montserrat:wght@200;300;400;500;600;700&family=Pacifico&family=Rubik+Maps&family=Rye&family=Saira+Stencil+One&family=Style+Script&family=WindSong&family=Xanh+Mono&family=Zen+Tokyo+Zoo&display=swap");
+  </style>
+  <style>
+     
+
+    #cartContainer {
+      font-size: 6rem;
+      color: #12dd7e;
+      text-align: center;
+    }
+  </style>
+  <body>
+    <!-- custom cursor  -->
+    <div id="cursor" style="transform: translate(49px, 969px)"></div>
+    <div
+      id="cursor-border"
+      style="
+        transform: translate(49px, 969px);
+        background-color: unset;
+        --size: 30px;
+        mix-blend-mode: unset;
+      "
+    ></div>
+    <!-- top header  -->
+
+    <my-header></my-header>
+
+    <!-- breadcrumb ==== -->
+    <section style="background-color: #212529">
+      <div class="container py-2">
+        <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="index.html">
+                <svg
+                  width="23"
+                  class="red"
+                  height="21"
+                  viewBox="0 0 23 21"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 8.94369L10.0675 1.51755C10.9101 0.827482 12.0899 0.827482 12.9325 1.51755L22 8.94369M4.5 6.07724V17.543C4.5 18.9 5.54467 20 6.83333 20H8H15H16.1667C17.4553 20 18.5 18.9 18.5 17.543V1.57281M9.16667 20V12.6291C9.16667 11.9507 9.689 11.4006 10.3333 11.4006H12.6667C13.311 11.4006 13.8333 11.9507 13.8333 12.6291V20"
+                    stroke="#12dd7e"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  ></path>
+                </svg>
+              </a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Shop Neon
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Best Seller
+            </li>
+          </ol>
+        </nav>
+      </div>
+    </section>
+   
+    <!-- cart  -->
+    <section class=" page-section main-table">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="site-blocks-table ">
+                        <table class="table ">
+                          <thead class="removan">
+                            <tr>
+                              <th class="product-thumbnail">Product</th>
+                              <th class="product-name">Product Title</th>
+                              <th class="product-price">Price</th>
+                              <th class="product-quantity">Quantity</th>
+                              <th class="product-total">Total</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="product-thumbnail">
+                                <img src="assets/images/inner-page/happy-small.avif" alt="Image" class="img-fluid">
+                              </td>
+                              <td class="product-name">
+                                <h2 class="h5 text-black">
+                                    This Is Our Happy Place Neon Sign</h2>
+                                    <p class="m-0">Color: Yellow</p>
+                                    <p class="m-0">Adds Ons: Smart Wireless Controller</p>
+                                    <p class="m-0">Add On - Brightness Controller: on</p>
+                                    <p><span class="cart__close" onclick="removeRow(this)"><i class="fa fa-trash"></i></span></p>
+                              </td>
+                              <td class="product-price">₹ 10,499</td>
+                              <td>
+                                <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
+                                  <div class="input-group-prepend">
+                                    <button class="btn btn-outline-black decrease" onclick="updateQuantity(-1)" type="button">−</button>
+                                  </div>
+                                  <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                  <div class="input-group-append">
+                                    <button class="btn btn-outline-black increase" onclick="updateQuantity(1)" type="button">+</button>
+                                  </div>
+                                </div>
+            
+                              </td>
+                              <td>₹ 10,499</td>
+                            </tr>
+            
+                            <tr>
+                              <td class="product-thumbnail">
+                                <img src="assets/images/inner-page/FreeThunderNeonSign.avif" alt="Image" class="img-fluid">
+                              </td>
+                              <td class="product-name">
+                                <h2 class="h5 text-black">
+                                    FREE Crown Light Worth ₹4000</h2>
+                                    <p><span class="cart__close" onclick="removeRow(this)"><i class="fa fa-trash"></i></span></p>
+                              </td>
+                              <td class="product-price">₹ 0</td>
+                              <td>
+                                <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
+                                    <div class="input-group-prepend">
+                                      <button class="btn btn-outline-black decrease" onclick="updateQuantity(-1)" type="button">−</button>
+                                    </div>
+                                    <input type="text" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                    <div class="input-group-append">
+                                      <button class="btn btn-outline-black increase" onclick="updateQuantity(1)" type="button">+</button>
+                                    </div>
+                                  </div>
+            
+                              </td>
+                              <td >₹ 0</td>
+                              
+                            </tr>
+                            <tr>
+                              <td class="product-thumbnail">
+                                <img src="assets/images/inner-page/SmartWirelessController.avif" alt="Image" class="img-fluid">
+                              </td>
+                              <td class="product-name">
+                                <h2 class="h5 text-black">                              
+                              FREE Remote Controller Worth ₹1500</h2>
+                              <p><span class="cart__close" onclick="removeRow(this)"><i class="fa fa-trash"></i></span></p>
+                              </td>
+                              <td class="product-price">₹ 0</td>
+                              <td>
+                                <div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 60px;">
+                                    <!-- <div class="input-group-prepend">
+                                      <button class="btn btn-outline-black decrease" onclick="updateQuantity(-1)" type="button">−</button>
+                                    </div> -->
+                                    <input type="" class="form-control text-center quantity-amount" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" disabled>
+                                    <!-- <div class="input-group-append">
+                                      <button class="btn btn-outline-black increase" onclick="updateQuantity(1)" type="button">+</button>
+                                    </div> -->
+                                  </div>
+            
+                              </td>
+                              <td>₹ 0</td>
+                              
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                </div>
+                <div class="text-center align-items-center head-title" id="cartContainer">
+                </div>
+
+                <div class="row removan" id="remove-item" >
+                    <div class="col-md-6">
+                        <div class="row mb-5">
+                                <button class="text-dark border-0" id="remove-button">
+                                  <span></span>
+                                </button>
+                     </div>
+            </div>
+            <div class="col-md-6 mt-5 m-auto pl-5 ct ">
+                <div class="row justify-content-end">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12 text-center mb-5">
+                                <h3 class="text-black fw-bold h4 text-uppercase ct-total">Cart Totals</h3>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <div class="sab d-flex justify-content-around">
+                                    <span class="text-black">Subtotal</span>
+                                    <span class="text-black">-</span>
+                                    <span class="text-black">₹ 10,499</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="linkWrap text-center">
+                                    <a href="checkout.html" class="cta style-9">
+                                        <span>Checkout</span>
+                                        <svg width="13px" height="10px" viewBox="0 0 13 10">
+                                            <path d="M1,5 L11,5"></path>
+                                            <polyline points="8 1 12 5 8 9"></polyline>
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- cart end -->
+
+    <my-footer></my-footer>
+    
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="assets/js/font-awesome.js"></script>
+    <script src="assets/components/header.js"></script>
+    <script src="assets/components/footer.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/components/story.js"></script>
+  </body>
+</html>
