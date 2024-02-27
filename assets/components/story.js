@@ -172,6 +172,38 @@ const allStories = [
       "https://res.cloudinary.com/durcylpvn/video/upload/v1704785287/neon/video8.mp4",
     author: "customize ",
   },
+  {
+    id: 8,
+    imageUrl:
+      "https://m.media-amazon.com/images/I/81P61nHzeKS._AC_UF894,1000_QL80_.jpg",
+    videoUrl:
+      "https://res.cloudinary.com/durcylpvn/video/upload/v1707625541/story/uspa.mp4",
+    author: "customize ",
+  },
+  {
+    id: 9,
+    imageUrl:
+      "https://rukminim2.flixcart.com/image/850/1000/xif0q/table-lamp/m/0/y/good-vibes-neonsign-neon-lights-for-wall-decor-warm-white-led-original-imagquhmzb3exs6h.jpeg?q=90&crop=false",
+    videoUrl:
+      "https://res.cloudinary.com/durcylpvn/video/upload/v1707624808/story/puma.mp4",
+    author: "customize ",
+  },
+  {
+    id: 10,
+    imageUrl:
+      "https://res.cloudinary.com/durcylpvn/image/upload/v1704784903/cld-sample-3.jpg",
+    videoUrl:
+      "https://res.cloudinary.com/durcylpvn/video/upload/v1707620445/story/gucci.mp4",
+    author: "customize ",
+  },
+  {
+    id: 11,
+    imageUrl:
+      "https://res.cloudinary.com/durcylpvn/image/upload/v1704784901/cld-sample.jpg",
+    videoUrl:
+      "https://res.cloudinary.com/durcylpvn/video/upload/v1707613207/story/story1.mp4",
+    author: "customize ",
+  },
 ];
 const stories = document.querySelector(".stories");
 const storiesFullView = document.querySelector(".stories-full-view");

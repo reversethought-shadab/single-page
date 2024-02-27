@@ -44,13 +44,28 @@ document.addEventListener("DOMContentLoaded", function () {
   // Function to calculate the price based on the input length
   function calculatePrice(text) {
     const length = text.trim().length;
-    let price = 2500;
 
-    if (length > 1) {
-      price += (length - 1) * 300;
+    // Define price tiers and corresponding prices
+    const priceTiers = [
+      { length: 0, price: 1200 }, // Up to 0 characters (base price)
+      { length: 5, price: 1500 }, // Up to 5 characters
+      { length: 8, price: 1800 }, // Up to 8 characters
+      { length: 11, price: 2100 }, // Up to 11 characters
+      { length: 14, price: 2400 }, // Up to 14 characters
+      { length: 17, price: 2700 }, // Up to 17 characters
+      { length: 21, price: 3000 }, // Up to 21 characters
+      { length: 24, price: 3300 }, // Up to 24 characters
+
+      // Add more tiers as needed
+    ];
+    if (length === 0) {
+      return 0;
     }
+    // Find the matching price tier for the current length
+    const matchingTier = priceTiers.find((tier) => length <= tier.length);
 
-    return price;
+    // Return the price from the matching tier
+    return matchingTier.price;
   }
 
   // Event listener for textarea input
@@ -106,12 +121,12 @@ document.addEventListener("DOMContentLoaded", function () {
         neonTextElement.style.textShadow = `
                 0 0 7px ${selectedColor},
                 0 0 10px ${selectedColor},
+                0 0 2px ${selectedColor},
                 0 0 21px ${selectedColor},
-                0 0 42px ${selectedColor},
-                0 0 82px ${selectedColor},
-                0 0 92px ${selectedColor},
-                0 0 102px ${selectedColor},
-                0 0 151px ${selectedColor}
+                0 0 22px ${selectedColor},
+                0 0 2px ${selectedColor},
+                0 0 12px ${selectedColor},
+                0 0 11px ${selectedColor}
             `;
       } else {
         console.error("Element with class 'neonText' not found.");
@@ -155,6 +170,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // ============== modal ===============
+
+  //  ================================
   function showPreview() {
     const previewFull = document.querySelector(".preview-full");
     const modalBody = document.querySelector(".modal-body");
@@ -175,6 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (outputButton) {
     outputButton.addEventListener("click", showPreview);
   }
+
   // cart function
 
   // Function to add item to cart

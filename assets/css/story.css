@@ -1,6 +1,7 @@
 
 .stories-container {
-  max-width: 800px;
+  max-width: 100%;
+  padding: 0 46px;
   margin: 24px auto;
   position: relative;
   z-index: 0;
@@ -49,8 +50,9 @@
 }
 
 
-.stories-container .story img{
-  width: 90px !important;
+.stories-container .story img {
+  width: 150px !important;
+  height: 200px;
   flex-shrink: 0;
   border-radius: 16px;
   border: 2px solid #12dd7e;
@@ -61,7 +63,7 @@
   cursor: pointer;
 }
 .stories .story img{
-  border-radius: 50%;
+  border-radius: 7%;
 }
 .stories-container .story  {
   width: 100%;
