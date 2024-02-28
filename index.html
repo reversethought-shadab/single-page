@@ -189,39 +189,147 @@
               </div>
             </div>
             <hr class="  mx-lg-5 text-white" style="border: 1px solid ; border-radius: 2px; color: white;;">
-            <p class=" mx-lg-5 mt-3 text-white">Select Size</p>
-        <div class="size-wrapper  mx-lg-5">
-        <span class="pplr-drop-item  active" id="first" onclick="changeFontSize(40, 'Regular')">
+            <p class=" mx-lg-5 mt-3 text-white">Recomended Size</p>
+        <div class="size-wrapper  mx-lg-5" id="main-size">
+        <span class="pplr-drop-item  active" id="first"  onclick="changeFontSize(40, 'Regular')">
           Regular
           <span class="custom_span_size">Length: 12" Height 0.8 </span>
         </span>
-        <span class="pplr-drop-item  " id="second" onclick="changeFontSize(40, 'Regular')">
+        <span class="pplr-drop-item  " id="second" onclick="changeFontSize(42, 'Regular')">
          Medium
           <span class="custom_span_size"> Length: 18" Height 1   </span>
         </span>
-        <span class="pplr-drop-item " id="third" onclick="changeFontSize(40, 'Regular')">
+        <span class="pplr-drop-item " id="third" onclick="changeFontSize(44, 'Regular')">
           Large
           <span class="custom_span_size"> Length: 24" Height 1  </span>
         </span>
-        <span class="pplr-drop-item " id="fourth" onclick="changeFontSize(40, 'Regular')">
+        <span class="pplr-drop-item " id="fourth" onclick="changeFontSize(46, 'Regular')">
          X-Large
           <span class="custom_span_size"> Length: 30" Height 1  </span>
         </span>
-        <span class="pplr-drop-item" id="fifth" onclick="changeFontSize(40, 'Medium')">
+        <span class="pplr-drop-item" id="fifth" onclick="changeFontSize(48, 'Medium')">
           XXL
           <span class="custom_span_size">Width: 36" Height 1  </span>
         </span>
-        <span class="pplr-drop-item" id="sixth" onclick="changeFontSize(40, 'Large')">
+        <span class="pplr-drop-item" id="sixth" onclick="changeFontSize(50, 'Large')">
          3XL
           <span class="custom_span_size">Width: 42 "  Height 1  </span>
         </span>
-        <span class="pplr-drop-item" id="seventh" onclick="changeFontSize(40, 'Medium')">
-          4Xl
+        <span class="pplr-drop-item" id="seventh" onclick="changeFontSize(52, 'Medium')">
+          4xl
           <span class="custom_span_size">Width: 48 " Height 1   </span>
         </span>
        
         </div>
-      
+        <hr class="  mx-lg-5 text-white selected-elem d-none" style="border: 1px solid ; border-radius: 2px; color: white;;">
+            <p class=" mx-lg-5 mt-3 text-white  selected-elem d-none"> Choose Custom Size</p>
+            <!-- regular  -->
+            <div id="custom-wrapper">
+        <div class="size-wrapper   mx-lg-5" id="regular">
+        <span class="pplr-drop-item  active" id="first"  onclick="changeFontSize(42, 'Regular')">
+          Regular
+          <span class="custom_span_size">Length: 18" Height 1 </span>
+        </span>
+        <span class="pplr-drop-item  " id="second" onclick="changeFontSize(44, 'Regular')">
+         Medium
+          <span class="custom_span_size"> Length: 24" Height 1   </span>
+        </span>
+        <span class="pplr-drop-item " id="third" onclick="changeFontSize(46, 'Regular')">
+          Large
+          <span class="custom_span_size"> Length: 30" Height 1  </span>
+        </span>
+        </div>
+        <!-- medium  -->
+        <div class="size-wrapper   mx-lg-5" id="medium">
+        <span class="pplr-drop-item  active" id="first"  onclick="changeFontSize(44, 'Regular')">
+          Regular
+          <span class="custom_span_size">Length: 24" Height 1 </span>
+        </span>
+        <span class="pplr-drop-item  " id="second" onclick="changeFontSize(46, 'Regular')">
+         Medium
+          <span class="custom_span_size"> Length: 30" Height 1   </span>
+        </span>
+        <span class="pplr-drop-item " id="third" onclick="changeFontSize(48, 'Regular')">
+          Large
+          <span class="custom_span_size"> Length: 36" Height 1.5  </span>
+        </span>
+        </div>
+        <!-- large  -->
+        <div class="size-wrapper   mx-lg-5" id="large">
+        <span class="pplr-drop-item  active" id="first"  onclick="changeFontSize(46, 'Regular')">
+          Regular
+          <span class="custom_span_size">Length: 30" Height 1 </span>
+        </span>
+        <span class="pplr-drop-item  " id="second" onclick="changeFontSize(48, 'Regular')">
+         Medium
+          <span class="custom_span_size"> Length: 36" Height 1.5   </span>
+        </span>
+        <span class="pplr-drop-item " id="third" onclick="changeFontSize(50, 'Regular')">
+          Large
+          <span class="custom_span_size"> Length: 42" Height 1.5  </span>
+        </span>
+        </div>
+        <!-- x-large  -->
+        <div class="size-wrapper   mx-lg-5" id="x-large">
+        <span class="pplr-drop-item  active" id="first"  onclick="changeFontSize(48, 'Regular')">
+          Regular
+          <span class="custom_span_size">Length: 36" Height 1.5 </span>
+        </span>
+        <span class="pplr-drop-item  " id="second" onclick="changeFontSize(50, 'Regular')">
+         Medium
+          <span class="custom_span_size"> Length: 42" Height 1.5   </span>
+        </span>
+        <span class="pplr-drop-item " id="third" onclick="changeFontSize(52, 'Regular')">
+          Large
+          <span class="custom_span_size"> Length: 48" Height 2  </span>
+        </span>
+        </div>
+        <!-- xxl  -->
+        <div class="size-wrapper   mx-lg-5" id="xxl">
+        <span class="pplr-drop-item  active" id="first"  onclick="changeFontSize(50, 'Regular')">
+          Regular
+          <span class="custom_span_size">Length: 42" Height 1.5 </span>
+        </span>
+        <span class="pplr-drop-item  " id="second" onclick="changeFontSize(52, 'Regular')">
+         Medium
+          <span class="custom_span_size"> Length: 48" Height 2   </span>
+        </span>
+        <span class="pplr-drop-item " id="third" onclick="changeFontSize(54, 'Regular')">
+          Large
+          <span class="custom_span_size"> Length: 54" Height 2  </span>
+        </span>
+        </div>
+        <!-- 3xl  -->
+        <div class="size-wrapper   mx-lg-5" id="txl">
+        <span class="pplr-drop-item  active" id="first"  onclick="changeFontSize(52, 'Regular')">
+          Regular
+          <span class="custom_span_size">Length: 48" Height 2 </span>
+        </span>
+        <span class="pplr-drop-item  " id="second" onclick="changeFontSize(54, 'Regular')">
+         Medium
+          <span class="custom_span_size"> Length: 54" Height 2.5   </span>
+        </span>
+        <span class="pplr-drop-item " id="third" onclick="changeFontSize(56, 'Regular')">
+          Large
+          <span class="custom_span_size"> Length: 60" Height 2.5  </span>
+        </span>
+        </div>
+        <!-- 4xl  -->
+        <div class="size-wrapper   mx-lg-5" id="fxl">
+        <span class="pplr-drop-item  active" id="first"  onclick="changeFontSize(54, 'Regular')">
+          Regular
+          <span class="custom_span_size">Length: 54" Height 2.5 </span>
+        </span>
+        <span class="pplr-drop-item  " id="second" onclick="changeFontSize(56, 'Regular')">
+         Medium
+          <span class="custom_span_size"> Length: 60" Height 2.5   </span>
+        </span>
+        <span class="pplr-drop-item " id="third" onclick="changeFontSize(58, 'Regular')">
+          Large
+          <span class="custom_span_size"> Length: 66" Height 3  </span>
+        </span>
+        </div>
+      </div>
         
         <hr class="  mx-lg-5 text-white" style="border: 1px solid ; border-radius: 2px; color: white;">
         <div class="price-item  mx-lg-5">₹00</div>
@@ -309,64 +417,125 @@
     <script>
       const textArea = document.querySelector('.textarea-neon');
       const sizeSpans = document.querySelectorAll('.pplr-drop-item');
-      
+  
       textArea.addEventListener('input', () => {
-        const textLength = textArea.value.length;
-        let activeSpan;
-      
-        if (textLength <= 5) {
-          activeSpan = sizeSpans[0]; // Make "Regular" active
-        } else if (textLength <= 8) {
-          activeSpan = sizeSpans[1]; // Make "Medium" active
-        } else if (textLength <= 11) {
-          activeSpan = sizeSpans[2]; // Make "Large" active
-        } else {
-          // Calculate the active span index based on the current text length and the desired interval (adjust the 3 here)
-          const activeIndex = Math.floor((textLength - 4) / 3); // Change 3 to your desired interval
-          activeSpan = sizeSpans[activeIndex]; // Adjust the index to start from 0
-        }
-      
-        // Remove "active" class from all spans and add it to the active one
-        sizeSpans.forEach(span => span.classList.remove('active'));
-        activeSpan.classList.add('active');
+          const textLength = textArea.value.length;
+          let activeSpan;
+  
+          if (textLength <= 5) {
+              activeSpan = sizeSpans[0]; // Make "Regular" active
+              enableSizeSpansFromIndex(0); // Enable size spans starting from "Regular"
+          } else if (textLength <= 8) {
+              activeSpan = sizeSpans[1]; // Make "Medium" active
+              enableSizeSpansFromIndex(1); // Enable size spans starting from "Medium"
+          } else if (textLength <= 11) {
+              activeSpan = sizeSpans[2]; // Make "Large" active
+              enableSizeSpansFromIndex(2); // Enable size spans starting from "Large"
+          } else {
+              const activeIndex = Math.floor((textLength - 4) / 3);
+              activeSpan = sizeSpans[activeIndex];
+              enableSizeSpansFromIndex(activeIndex); // Enable size spans starting from the active span
+          }
+  
+          // Remove "active" class from all spans and add it to the active one
+          sizeSpans.forEach(span => span.classList.remove('active'));
+          activeSpan.classList.add('active');
       });
-      
-      </script>
-            <script>
-            function changeFontSize() {
-  // Reset all items to remove the 'active' class
-  document.querySelectorAll('.pplr-drop-item').forEach(function (element) {
-    element.classList.remove('active');
-  });
-
-  // Set the clicked item as active
-  event.currentTarget.classList.add('active');
-
-  // Price calculation (using existing logic from your code)
-  const prices = {
-    "Regular": 10,
-    "Medium": 15,
-    "Large": 20,
-    // ... add more sizes and prices as needed
-  };
-
-  const selectedSize = event.currentTarget.textContent.trim(); // Get size from clicked item's text
-  const price = prices[selectedSize] || 0; // Default to 0 if size not found
-
-  console.log(`${selectedSize} selected. Price: ${price}`);
-
-  // Update price display element (replace with your desired display logic)
-  document.getElementById('selected-price').textContent = `Price: ${price}`;
-}
-
+  
+      function enableSizeSpansFromIndex(index) {
+          // Enable size spans starting from the given index
+          for (let i = index; i < sizeSpans.length; i++) {
+              sizeSpans[i].classList.remove('disabled');
+          }
+          // Disable size spans before the given index
+          for (let i = 0; i < index; i++) {
+              sizeSpans[i].classList.add('disabled');
+          }
+      }
+  
+      function changeFontSize(fontSize, sizeType) {
+          // Set the clicked item as active
+          const clickedSpan = event.currentTarget;
+  
+          if (clickedSpan.classList.contains('disabled')) {
+              // Show tooltip if the span is disabled
+              const tooltip = document.createElement('div');
+              tooltip.classList.add('tooltip');
+              tooltip.textContent = "You can't select this size";
+              document.body.appendChild(tooltip);
               
-            </script>
-      
+              // Position tooltip above the disabled span
+              const rect = clickedSpan.getBoundingClientRect();
+              tooltip.style.top = (rect.top - tooltip.offsetHeight) + 'px';
+              tooltip.style.left = (rect.left + rect.width / 2 - tooltip.offsetWidth / 2) + 'px';
+              tooltip.style.color = 'white'; // Set tooltip text color to white
+  
+              // Remove the tooltip after a short delay
+              setTimeout(() => {
+                  tooltip.remove();
+              }, 2000);
+  
+              // Prevent selecting the disabled span
+              return;
+          }
+  
+          // Reset all items to remove the 'active' class
+          sizeSpans.forEach(span => span.classList.remove('active'));
+  
+          // Set the font size for #Preview-text
+          document.getElementById('Preview-text').style.fontSize = `${fontSize}px`;
+  
+          // Add 'active' class to the clicked span
+          clickedSpan.classList.add('active');
+  
+          console.log(`${sizeType} selected. Font size: ${fontSize}px`);
+      }
+  </script>
+  
       <script src="assets/js/jquery.min.js"></script>
       <script src="assets/js/bootstrap.bundle.min.js"></script>
       <script src="assets/js/font-awesome.js"></script>
       <script src="assets/js/customize.js"></script>
       <script src="assets/components/story.js"></script>
     </body>
-
+    <script>
+      $(document).ready(function(){
+     $("#first").click(function(){
+       $("#regular, .selected-elem").show();
+       $(".selected-elem").removeClass("d-none")
+       $("#medium, #large, #x-large, #xxl, #txl, #fxl").hide();
+     });
+     $("#second").click(function(){
+       $("#medium, .selected-elem").show();
+       $(".selected-elem").removeClass("d-none")
+       $("#regular, #large, #x-large, #xxl, #txl, #fxl").hide();
+     });
+     $("#third").click(function(){
+       $("#large, .selected-elem").show();
+       $(".selected-elem").removeClass("d-none")
+       $("#regular, #medium, #x-large, #xxl, #txl, #fxl").hide();
+     });
+     $("#fourth, .selected-elem").click(function(){
+       $("#x-large").show();
+       $(".selected-elem").removeClass("d-none")
+       $("#regular, #medium, #large, #xxl, #txl, #fxl").hide();
+     });
+     $("#fifth, .selected-elem").click(function(){
+       $("#xxl").show();
+       $(".selected-elem").removeClass("d-none")
+       $("#regular, #medium, #large, #x-large, #txl, #fxl").hide();
+     });
+     $("#sixth, .selected-elem").click(function(){
+       $("#txl").show();
+       $(".selected-elem").removeClass("d-none")
+       $("#regular, #medium, #large, #x-large, #xxl, #fxl").hide();
+     });
+     $("#seventh, .selected-elem").click(function(){
+       $("#fxl").show();
+       $(".selected-elem").removeClass("d-none")
+       $("#regular, #medium, #large, #x-large, #xxl, #txl").hide();
+     });
+   });
+   
+       </script>
   </html>

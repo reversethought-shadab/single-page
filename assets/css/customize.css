@@ -634,6 +634,12 @@ input {
   border-radius: 5px;
   border: 2px solid rgba(177,177,177,1);
 }
+#regular, #medium, #large, #x-large, #xxl, #txl, #fxl{
+display: none;
+}
+ .disabled {
+  border-color: red;
+}
 .pplr-drop-item {
   display: flex;
   justify-content: space-evenly;
