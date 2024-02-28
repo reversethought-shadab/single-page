@@ -190,34 +190,34 @@
             </div>
             <hr class="  mx-lg-5 text-white" style="border: 1px solid ; border-radius: 2px; color: white;;">
             <p class=" mx-lg-5 mt-3 text-white">Select Size</p>
-        <div class="size-wrapper d-flex  mx-lg-5">
+        <div class="size-wrapper  mx-lg-5">
         <span class="pplr-drop-item  active" id="first" onclick="changeFontSize(40, 'Regular')">
           Regular
-          <span class="custom_span_size">Length: 12" Height </span>
+          <span class="custom_span_size">Length: 12" Height 0.8 </span>
         </span>
         <span class="pplr-drop-item  " id="second" onclick="changeFontSize(40, 'Regular')">
          Medium
-          <span class="custom_span_size"> Length: 18" Height  </span>
+          <span class="custom_span_size"> Length: 18" Height 1   </span>
         </span>
         <span class="pplr-drop-item " id="third" onclick="changeFontSize(40, 'Regular')">
           Large
-          <span class="custom_span_size"> Length: 24" Height </span>
+          <span class="custom_span_size"> Length: 24" Height 1  </span>
         </span>
         <span class="pplr-drop-item " id="fourth" onclick="changeFontSize(40, 'Regular')">
          X-Large
-          <span class="custom_span_size"> Length: 30" Height </span>
+          <span class="custom_span_size"> Length: 30" Height 1  </span>
         </span>
         <span class="pplr-drop-item" id="fifth" onclick="changeFontSize(40, 'Medium')">
           XXL
-          <span class="custom_span_size">Width: 36" Height </span>
+          <span class="custom_span_size">Width: 36" Height 1  </span>
         </span>
         <span class="pplr-drop-item" id="sixth" onclick="changeFontSize(40, 'Large')">
          3XL
-          <span class="custom_span_size">Width: 42 "  Height </span>
+          <span class="custom_span_size">Width: 42 "  Height 1  </span>
         </span>
         <span class="pplr-drop-item" id="seventh" onclick="changeFontSize(40, 'Medium')">
           4Xl
-          <span class="custom_span_size">Width: 48 " Height:  </span>
+          <span class="custom_span_size">Width: 48 " Height 1   </span>
         </span>
        
         </div>
@@ -330,7 +330,38 @@
         sizeSpans.forEach(span => span.classList.remove('active'));
         activeSpan.classList.add('active');
       });
+      
       </script>
+            <script>
+            function changeFontSize() {
+  // Reset all items to remove the 'active' class
+  document.querySelectorAll('.pplr-drop-item').forEach(function (element) {
+    element.classList.remove('active');
+  });
+
+  // Set the clicked item as active
+  event.currentTarget.classList.add('active');
+
+  // Price calculation (using existing logic from your code)
+  const prices = {
+    "Regular": 10,
+    "Medium": 15,
+    "Large": 20,
+    // ... add more sizes and prices as needed
+  };
+
+  const selectedSize = event.currentTarget.textContent.trim(); // Get size from clicked item's text
+  const price = prices[selectedSize] || 0; // Default to 0 if size not found
+
+  console.log(`${selectedSize} selected. Price: ${price}`);
+
+  // Update price display element (replace with your desired display logic)
+  document.getElementById('selected-price').textContent = `Price: ${price}`;
+}
+
+              
+            </script>
+      
       <script src="assets/js/jquery.min.js"></script>
       <script src="assets/js/bootstrap.bundle.min.js"></script>
       <script src="assets/js/font-awesome.js"></script>
