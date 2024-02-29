@@ -38,6 +38,9 @@
     <!-- top header  -->
 
     <!-- breadcrumb ==== -->
+    <main class="main-section-all">
+
+   
    <section class="mt-2"  style="background-color: #212529;">
      <div class="container py-2 ">
     <div class="top-baar">
@@ -117,7 +120,7 @@
             <hr class="  mx-lg-5 text-white" style="border: 1px solid ; border-radius: 2px; color: white;;">
             <p class=" mx-lg-5 text-white">Select Font</p>
             <div class="pplr-selecter-options mx-lg-5 mx-sm-0 py-3"><span
-                class="pplr-selecter-item  passionate pplr_brittanysignature active"
+                class="pplr-selecter-item  passionate pplr_brittanysignature selected-font  active"
                 style="font-family:Brittanysignature, sans-serif;">New York</span><span
                 class="pplr-selecter-item dream pplr_dream-angel dream"
                 style="font-family:'Dream-angel', cursive;">Paris</span><span
@@ -159,7 +162,7 @@
                 style="font-family: 'Acoustica', cursive;">Mascow</span><span
                 class="pplr-selecter-item  pplr_callifornia sparky"
                 style="font-family: 'Callifornia', cursive;">Riyadh</span><span
-                class="pplr-selecter-item  pplr_boarding-regular selected-font vibey"
+                class="pplr-selecter-item  pplr_boarding-regular vibey"
                 style="font-family: 'Boarding-regular', cursive;">Dublin</span><span
                 class="pplr-selecter-item  pplr_harmonia lofi"
                 style="font-family: 'Harmonia', system-ui;">Bangkok</span><span
@@ -174,27 +177,26 @@
             <div class="color-select mt-3  mx-lg-5">
               <p class=" text-white">Choose Color</p>
               <div class="pick-color" onclick="activateColor(event)">
-                <div class="color-pallet active" data-color="#9D49BB"></div>
+                <div class="color-pallet active" data-color="#c44af0"></div>
                 <div class="color-pallet" data-color="#62C0E2"></div>
-                <div class="color-pallet" data-color="#C4D7D1"></div>
-                <div class="color-pallet" data-color="#C9DB6B"></div>
+                <div class="color-pallet" data-color="#8ff3d4"></div>
+                <div class="color-pallet" data-color="#e3ff57"></div>
                 <div class="color-pallet" data-color="#DEAE32"></div>
-                <div class="color-pallet" data-color="#2E65C9"></div>
-                <div class="color-pallet" data-color="#A6393F"></div>
-                <div class="color-pallet" data-color="#B87799"></div>
-                <div class="color-pallet" data-color="#207645"></div>
-                <div class="color-pallet" data-color="#9EAAA0"></div>
+                <div class="color-pallet" data-color="#2471ff"></div>
+                <div class="color-pallet" data-color="#ea3942"></div>
+                <div class="color-pallet" data-color="#db80af"></div>
+                <div class="color-pallet" data-color="#59ff3f"></div>
+                <div class="color-pallet" data-color="#94fda5"></div>
               </div>
             </div>
-            <hr class="  mx-lg-5 text-white" style="border: 1px solid ; border-radius: 2px; color: white;;">
             <p class=" mx-lg-5 mt-3 text-white">Recomended Size</p>
-        <div class="size-wrapper  mx-lg-5" id="main-size">
+            <div class="size-wrapper  mx-lg-5" id="main-size">
         <span class="pplr-drop-item  active" id="first"  onclick="changeFontSize(40, 'Regular')">
           Regular
           <span class="custom_span_size">Length: 12" Height 0.8 </span>
         </span>
         <span class="pplr-drop-item  " id="second" onclick="changeFontSize(42, 'Regular')">
-         Medium
+          Medium
           <span class="custom_span_size"> Length: 18" Height 1   </span>
         </span>
         <span class="pplr-drop-item " id="third" onclick="changeFontSize(44, 'Regular')">
@@ -217,12 +219,18 @@
           4xl
           <span class="custom_span_size">Width: 48 " Height 1   </span>
         </span>
-       
+        
+      </div>
+      <hr class="  mx-lg-5 text-white" style="border: 1px solid ; border-radius: 2px; color: white;;">
+        <div class="d-flex  mx-lg-5 addon">
+          <div class="pplr-wrapper  pplr-checkbox  pplr-waterproof-ip67-rated" data-main="5"><label class="oindexlabel">Add Ons</label><label class="pplrlabel" onclick="pplr_unfold(this)"> <input data-pplr_price="3000" data-pplr_price-type="2" type="checkbox" data-frame="5" onchange="updatecondition(5,false,true);LoadPplrWithFont('5',true);" class="pplrcheckbox  pplraddprice" value="Yes" name="properties[Waterproof IP67 Rated]"> Add Items <span class="pplr_option_price_span"></span> </label></div>
+          <div class="pplr-wrapper  pplr-checkbox  pplr-waterproof-ip67-rated" data-main="5"><label class="oindexlabel">Add Ons</label><label class="pplrlabel" onclick="pplr_unfold(this)"> <input data-pplr_price="3000" data-pplr_price-type="2" type="checkbox" data-frame="5" onchange="updatecondition(5,false,true);LoadPplrWithFont('5',true);" class="pplrcheckbox  pplraddprice" value="Yes" name="properties[Add Items]"> Add Items <span class="pplr_option_price_span"></span> </label></div>
+          <div class="pplr-wrapper  pplr-checkbox  pplr-waterproof-ip67-rated" data-main="5"><label class="oindexlabel">Add Ons</label><label class="pplrlabel" onclick="pplr_unfold(this)"> <input data-pplr_price="3000" data-pplr_price-type="2" type="checkbox" data-frame="5" onchange="updatecondition(5,false,true);LoadPplrWithFont('5',true);" class="pplrcheckbox  pplraddprice" value="Yes" name="properties[Add Items]"> Add Items <span class="pplr_option_price_span"></span> </label></div>
         </div>
-        <hr class="  mx-lg-5 text-white selected-elem d-none" style="border: 1px solid ; border-radius: 2px; color: white;;">
-            <p class=" mx-lg-5 mt-3 text-white  selected-elem d-none"> Choose Custom Size</p>
-            <!-- regular  -->
-            <div id="custom-wrapper">
+        <!-- <hr class="  mx-lg-5 text-white selected-elem d-none" style="border: 1px solid ; border-radius: 2px; color: white;;">
+            <p class=" mx-lg-5 mt-3 text-white  selected-elem d-none"> Choose Custom Size</p> -->
+            
+            <!-- <div id="custom-wrapper">
         <div class="size-wrapper   mx-lg-5" id="regular">
         <span class="pplr-drop-item  active" id="first"  onclick="changeFontSize(42, 'Regular')">
           Regular
@@ -237,7 +245,6 @@
           <span class="custom_span_size"> Length: 30" Height 1  </span>
         </span>
         </div>
-        <!-- medium  -->
         <div class="size-wrapper   mx-lg-5" id="medium">
         <span class="pplr-drop-item  active" id="first"  onclick="changeFontSize(44, 'Regular')">
           Regular
@@ -252,7 +259,6 @@
           <span class="custom_span_size"> Length: 36" Height 1.5  </span>
         </span>
         </div>
-        <!-- large  -->
         <div class="size-wrapper   mx-lg-5" id="large">
         <span class="pplr-drop-item  active" id="first"  onclick="changeFontSize(46, 'Regular')">
           Regular
@@ -267,7 +273,6 @@
           <span class="custom_span_size"> Length: 42" Height 1.5  </span>
         </span>
         </div>
-        <!-- x-large  -->
         <div class="size-wrapper   mx-lg-5" id="x-large">
         <span class="pplr-drop-item  active" id="first"  onclick="changeFontSize(48, 'Regular')">
           Regular
@@ -282,7 +287,7 @@
           <span class="custom_span_size"> Length: 48" Height 2  </span>
         </span>
         </div>
-        <!-- xxl  -->
+        
         <div class="size-wrapper   mx-lg-5" id="xxl">
         <span class="pplr-drop-item  active" id="first"  onclick="changeFontSize(50, 'Regular')">
           Regular
@@ -297,7 +302,7 @@
           <span class="custom_span_size"> Length: 54" Height 2  </span>
         </span>
         </div>
-        <!-- 3xl  -->
+       
         <div class="size-wrapper   mx-lg-5" id="txl">
         <span class="pplr-drop-item  active" id="first"  onclick="changeFontSize(52, 'Regular')">
           Regular
@@ -312,7 +317,7 @@
           <span class="custom_span_size"> Length: 60" Height 2.5  </span>
         </span>
         </div>
-        <!-- 4xl  -->
+        
         <div class="size-wrapper   mx-lg-5" id="fxl">
         <span class="pplr-drop-item  active" id="first"  onclick="changeFontSize(54, 'Regular')">
           Regular
@@ -327,7 +332,7 @@
           <span class="custom_span_size"> Length: 66" Height 3  </span>
         </span>
         </div>
-      </div>
+      </div> -->
         
         <hr class="  mx-lg-5 text-white" style="border: 1px solid ; border-radius: 2px; color: white;">
         <div class="price-item  mx-lg-5">₹00</div>
@@ -411,7 +416,7 @@
         </div>
       </main>
     </aside>
-   
+  </main>
     <script>
       const textArea = document.querySelector('.textarea-neon');
       const sizeSpans = document.querySelectorAll('.pplr-drop-item');
@@ -421,18 +426,18 @@
           let activeSpan;
   
           if (textLength <= 5) {
-              activeSpan = sizeSpans[0]; // Make "Regular" active
-              enableSizeSpansFromIndex(0); // Enable size spans starting from "Regular"
+              activeSpan = sizeSpans[0]; 
+              enableSizeSpansFromIndex(0); 
           } else if (textLength <= 8) {
-              activeSpan = sizeSpans[1]; // Make "Medium" active
-              enableSizeSpansFromIndex(1); // Enable size spans starting from "Medium"
+              activeSpan = sizeSpans[1]; 
+              enableSizeSpansFromIndex(1); 
           } else if (textLength <= 11) {
-              activeSpan = sizeSpans[2]; // Make "Large" active
-              enableSizeSpansFromIndex(2); // Enable size spans starting from "Large"
+              activeSpan = sizeSpans[2]; 
+              enableSizeSpansFromIndex(2);
           } else {
               const activeIndex = Math.floor((textLength - 4) / 3);
               activeSpan = sizeSpans[activeIndex];
-              enableSizeSpansFromIndex(activeIndex); // Enable size spans starting from the active span
+              enableSizeSpansFromIndex(activeIndex); 
           }
   
           // Remove "active" class from all spans and add it to the active one
@@ -491,48 +496,56 @@
   </script>
   
       <script src="assets/js/jquery.min.js"></script>
+     
       <script src="assets/js/bootstrap.bundle.min.js"></script>
       <script src="assets/js/font-awesome.js"></script>
       <script src="assets/js/customize.js"></script>
     </body>
     <script>
-      $(document).ready(function(){
-     $("#first").click(function(){
-       $("#regular, .selected-elem").show();
-       $(".selected-elem").removeClass("d-none")
-       $("#medium, #large, #x-large, #xxl, #txl, #fxl").hide();
-     });
-     $("#second").click(function(){
-       $("#medium, .selected-elem").show();
-       $(".selected-elem").removeClass("d-none")
-       $("#regular, #large, #x-large, #xxl, #txl, #fxl").hide();
-     });
-     $("#third").click(function(){
-       $("#large, .selected-elem").show();
-       $(".selected-elem").removeClass("d-none")
-       $("#regular, #medium, #x-large, #xxl, #txl, #fxl").hide();
-     });
-     $("#fourth, .selected-elem").click(function(){
-       $("#x-large").show();
-       $(".selected-elem").removeClass("d-none")
-       $("#regular, #medium, #large, #xxl, #txl, #fxl").hide();
-     });
-     $("#fifth, .selected-elem").click(function(){
-       $("#xxl").show();
-       $(".selected-elem").removeClass("d-none")
-       $("#regular, #medium, #large, #x-large, #txl, #fxl").hide();
-     });
-     $("#sixth, .selected-elem").click(function(){
-       $("#txl").show();
-       $(".selected-elem").removeClass("d-none")
-       $("#regular, #medium, #large, #x-large, #xxl, #fxl").hide();
-     });
-     $("#seventh, .selected-elem").click(function(){
-       $("#fxl").show();
-       $(".selected-elem").removeClass("d-none")
-       $("#regular, #medium, #large, #x-large, #xxl, #txl").hide();
-     });
-   });
-   
+    $(document).ready(function(){
+    $("#first").click(function(){
+        $(" .selected-elem").show();
+        $(".selected-elem").removeClass("d-none")
+        $("#regular").slideToggle("slow");
+        $("#medium, #large, #x-large, #xxl, #txl, #fxl").hide();
+    });
+    $("#second").click(function(){
+        $(".selected-elem").show();
+        $(".selected-elem").removeClass("d-none")
+        $("#medium").slideToggle("slow");
+        $("#regular, #large, #x-large, #xxl, #txl, #fxl").hide();
+    });
+    $("#third").click(function(){
+        $(".selected-elem").show();
+        $(".selected-elem").removeClass("d-none")
+        $("#large").slideToggle("slow");
+        $("#regular, #medium, #x-large, #xxl, #txl, #fxl").hide();
+    });
+    $("#fourth, .selected-elem").click(function(){
+        $(".selected-elem").show();
+        $(".selected-elem").removeClass("d-none")
+        $("#x-large").slideToggle("slow");
+        $("#regular, #medium, #large, #xxl, #txl, #fxl").hide();
+    });
+    $("#fifth, .selected-elem").click(function(){
+        $(".selected-elem").show();
+        $(".selected-elem").removeClass("d-none")
+        $("#xxl").slideToggle("slow");
+        $("#regular, #medium, #large, #x-large, #txl, #fxl").hide();
+    });
+    $("#sixth, .selected-elem").click(function(){
+        $(".selected-elem").show();
+        $(".selected-elem").removeClass("d-none")
+        $("#txl").slideToggle("slow");
+        $("#regular, #medium, #large, #x-large, #xxl, #fxl").hide();
+    });
+    $("#seventh, .selected-elem").click(function(){
+        $(".selected-elem").show();
+        $(".selected-elem").removeClass("d-none")
+        $("#fxl").slideToggle("slow");
+        $("#regular, #medium, #large, #x-large, #xxl, #txl").hide();
+    });
+});
+
        </script>
   </html>

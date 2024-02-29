@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       console.error("Price elements not found in the DOM.");
     }
-
     // Update price in the cart
     const cartPrice = document.querySelector(".cart-price");
     if (cartPrice) {
@@ -40,22 +39,31 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Cart price element not found in the DOM.");
     }
   }
-
   // Function to calculate the price based on the input length
   function calculatePrice(text) {
     const length = text.trim().length;
 
-    // Define price tiers and corresponding prices
     const priceTiers = [
-      { length: 0, price: 1200 }, // Up to 0 characters (base price)
-      { length: 5, price: 1500 }, // Up to 5 characters
-      { length: 8, price: 1800 }, // Up to 8 characters
-      { length: 11, price: 2100 }, // Up to 11 characters
-      { length: 14, price: 2400 }, // Up to 14 characters
-      { length: 17, price: 2700 }, // Up to 17 characters
-      { length: 21, price: 3000 }, // Up to 21 characters
-      { length: 24, price: 3300 }, // Up to 24 characters
-
+      { length: 0, price: 1200 },
+      { length: 5, price: 1200 },
+      { length: 8, price: 1500 },
+      { length: 11, price: 1800 },
+      { length: 14, price: 2100 },
+      { length: 17, price: 2400 },
+      { length: 21, price: 2700 },
+      { length: 24, price: 3000 },
+      { length: 27, price: 3300 },
+      { length: 30, price: 3600 },
+      { length: 33, price: 3900 },
+      { length: 36, price: 4200 },
+      { length: 39, price: 4500 },
+      { length: 42, price: 4800 },
+      { length: 45, price: 5100 },
+      { length: 48, price: 5400 },
+      { length: 51, price: 5700 },
+      { length: 54, price: 6000 },
+      { length: 57, price: 6300 },
+      { length: 60, price: 6600 },
       // Add more tiers as needed
     ];
     if (length === 0) {
@@ -64,25 +72,101 @@ document.addEventListener("DOMContentLoaded", function () {
     // Find the matching price tier for the current length
     const matchingTier = priceTiers.find((tier) => length <= tier.length);
 
-    // Return the price from the matching tier
     return matchingTier.price;
   }
+
+  // Event listener for size selection
 
   // Event listener for textarea input
   let firstLetterTyped = false;
   textarea.addEventListener("input", function (event) {
     const text = event.target.value;
-    const price = calculatePrice(text);
-
-    // Call the updatePrice function to update the price
+    const price = calculatePrice(text.replace(/\s/g, ""));
     updatePrice(price);
+    if (!firstLetterTyped && text.trim().length > 0) {
+      firstLetterTyped = true;
+    }
+  });
+  const sizeSpans = document.querySelectorAll(".pplr-drop-item");
+
+  sizeSpans.forEach((span, index) => {
+    span.addEventListener("click", function () {
+      // Get the id of the clicked span
+      const clickedId = this.id;
+
+      // Remove 'active' class from all spans
+      sizeSpans.forEach((span) => span.classList.remove("active"));
+
+      // Add 'active' class to the clicked span
+      this.classList.add("active");
+
+      // Calculate the base price based on the text area value
+      const text = textarea.value;
+      const basePrice = calculatePrice(text.replace(/\s/g, ""));
+
+      // Initialize the price increment
+      let activeIndex = -1;
+      sizeSpans.forEach((span, idx) => {
+        if (span.classList.contains("active")) {
+          activeIndex = idx;
+        }
+      });
+      sizeSpans.forEach((span) => span.classList.remove("active"));
+
+      // Add 'active' class to the clicked span
+      this.classList.add("active");
+      let priceIncrement = 0;
+
+      // Determine the price increment based on the clicked span
+      switch (clickedId) {
+        case "first":
+          priceIncrement = 0;
+          break;
+        case "second":
+          priceIncrement = 300;
+          break;
+        case "third":
+          priceIncrement = 900;
+          break;
+        case "fourth":
+          priceIncrement = 1500;
+          break;
+        case "fifth":
+          priceIncrement = 2100;
+          break;
+        case "sixth":
+          priceIncrement = 2700;
+          break;
+        case "seventh":
+          priceIncrement = 3300;
+          break;
+        default:
+          priceIncrement = 0;
+          break;
+      }
+
+      // Calculate the total price
+      let totalPrice = basePrice;
+      if (basePrice >= 1200) {
+        totalPrice += priceIncrement;
+
+        // Apply additional increments for spans after the active span
+        if (activeIndex >= 0 && index > activeIndex) {
+          totalPrice += priceIncrement * (index - activeIndex);
+        }
+      }
+
+      // Update the price value with the new total price
+      updatePrice(totalPrice);
+    });
   });
 
+  // fonts preview
   function applyFont(selectedFont) {
     textarea.style.fontFamily = selectedFont;
-    textarea.style.fontSize = "16px";
+    textarea.style.fontSize = "18px";
     previewText.style.fontFamily = selectedFont;
-    previewText.style.fontSize = "40px";
+    previewText.style.fontSize = "55px";
   }
 
   function handleFontItemClick(item) {
@@ -91,10 +175,15 @@ document.addEventListener("DOMContentLoaded", function () {
     item.classList.add("selected-font");
 
     const selectedFont = item.style.fontFamily;
-
+    if (!selectedFont || !isValidFont(selectedFont)) {
+      console.error("Invalid font family:", selectedFont);
+      return;
+    }
     applyFont(selectedFont);
   }
-
+  function isValidFont(font) {
+    return font !== "Comic Sans MS";
+  }
   pplrSelectItems.forEach((item) => {
     item.addEventListener("click", () => {
       handleFontItemClick(item);
@@ -119,14 +208,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (neonTextElement) {
         neonTextElement.style.textShadow = `
-                0 0 7px ${selectedColor},
+                0 0 5px ${selectedColor},
                 0 0 10px ${selectedColor},
-                0 0 2px ${selectedColor},
-                0 0 21px ${selectedColor},
-                0 0 22px ${selectedColor},
-                0 0 2px ${selectedColor},
-                0 0 12px ${selectedColor},
-                0 0 11px ${selectedColor}
+                0 0 15px ${selectedColor},
+                0 0 20px ${selectedColor},
+                0 0 25px ${selectedColor},
+                0 0 30px ${selectedColor},
+                0 0 35px ${selectedColor},
+                0 0 40px ${selectedColor}
             `;
       } else {
         console.error("Element with class 'neonText' not found.");
@@ -147,21 +236,16 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   // cart showen ---------------------
   $(document).ready(function ($) {
-    // Declare the body variable
     var $body = $("body");
 
-    // Function that shows and hides the sidebar cart
     $(".cart-button, .close-button,  #sidebar-cart-curtain").click(function (
       e
     ) {
       e.preventDefault();
 
-      // Add the show-sidebar-cart class to the body tag
       $body.toggleClass("show-sidebar-cart");
 
-      // Check if the sidebar curtain is visible
       if ($("#sidebar-cart-curtain").is(":visible")) {
-        // Hide the curtain
         $("#sidebar-cart-curtain").fadeOut(500);
       } else {
         // Show the curtain
@@ -169,68 +253,43 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-
   // ============== modal ===============
-
   //  ================================
   function showPreview() {
     const previewFull = document.querySelector(".preview-full");
     const modalBody = document.querySelector(".modal-body");
 
     if (previewFull && modalBody) {
-      // Clone the content of .preview-full
       const previewClone = previewFull.cloneNode(true);
-
-      // Clear the modal-body content
       modalBody.innerHTML = "";
-
-      // Append the cloned preview to the modal-body
       modalBody.appendChild(previewClone);
     }
   }
-
   const outputButton = document.getElementById("output");
   if (outputButton) {
     outputButton.addEventListener("click", showPreview);
   }
-
-  // cart function
-
   // Function to add item to cart
   function addToCart() {
-    // Check if the preview-full element exists
     const previewFull = document.querySelector(".preview-full");
     if (!previewFull) {
       console.error("Preview full element not found.");
       return;
     }
-
-    // Select the cart item element where the product will be added
     const cartItem = document.querySelector("#cart-item");
     if (!cartItem) {
       console.error("Cart item element not found.");
       return;
     }
-
-    // Clone the preview-full element
     const previewClone = previewFull.cloneNode(true);
-
-    // Remove unnecessary styles from the cloned element
     previewClone.classList.remove("preview-full");
     previewClone.style.height = "200px";
     previewClone.style.width = "250px";
-
-    // Clear the existing content inside the cart item
     cartItem.innerHTML = "";
-
-    // Append the cloned preview-full element to the cart item
     cartItem.appendChild(previewClone);
 
-    // Update empty cart message
     updateEmptyCartMessage();
   }
-
-  // Function to display empty cart message
   function updateEmptyCartMessage() {
     const cartItem = document.querySelector("#cart-item");
     const emptyCartMessage = document.getElementById("empty-cart-message");
@@ -239,39 +298,29 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Cart item or empty cart message not found.");
       return;
     }
-
-    // If cart item is empty, display the empty cart message
     if (!cartItem.innerHTML.trim()) {
       emptyCartMessage.classList.remove("d-none");
     } else {
       emptyCartMessage.classList.add("d-none");
     }
   }
-
-  // Add event listener to the add to cart button
   const addToCartButton = document.getElementById("add-cart-btn");
   if (addToCartButton) {
     addToCartButton.addEventListener("click", addToCart);
   }
-  // Function to remove a cart item
   function removeCartItem(event) {
-    // Get the parent cart item element
     const cartItem = event.target.closest(".product");
     if (!cartItem) {
       console.error("Cart item not found.");
       return;
     }
-
-    // Remove the cart item from the DOM
     cartItem.remove();
   }
-
   // Add event listener to each remove button
   const removeButtons = document.querySelectorAll(".remove-button");
   removeButtons.forEach((button) => {
     button.addEventListener("click", removeCartItem);
   });
-  // Function to update the visibility of the empty cart message
   function updateEmptyCartMessage() {
     const cartItems = document.querySelectorAll("#sidebar-cart .product");
     const emptyCartMessage = document.getElementById("empty-cart-message");
@@ -281,7 +330,5 @@ document.addEventListener("DOMContentLoaded", function () {
       emptyCartMessage.classList.add("d-none");
     }
   }
-
-  // Call the function initially to set the initial visibility
   updateEmptyCartMessage();
 });
