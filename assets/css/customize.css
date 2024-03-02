@@ -762,16 +762,7 @@ input, textarea, select, .disclosure__toggle {
 .pplr-waterproof-ip67-rated label.pplrlabel span {
   font-size: 14px;
 }
-.pplr-smart-wireless-controller label.pplrlabel::after {
-  content: "₹ 2,000";
-  display: block;
-  font-size: 14px;
-}
-.pplr-waterproof-ip67-rated label.pplrlabel::after {
-  content: "₹ 3,000";
-  display: block;
-  font-size: 14px;
-}
+
 #regular, #medium, #large, #x-large, #xxl, #txl, #fxl{
 display: none;
 }

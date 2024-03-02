@@ -223,9 +223,20 @@
       </div>
       <hr class="  mx-lg-5 text-white" style="border: 1px solid ; border-radius: 2px; color: white;;">
         <div class="d-flex  mx-lg-5 addon">
-          <div class="pplr-wrapper  pplr-checkbox  pplr-waterproof-ip67-rated" data-main="5"><label class="oindexlabel">Add Ons</label><label class="pplrlabel" onclick="pplr_unfold(this)"> <input data-pplr_price="3000" data-pplr_price-type="2" type="checkbox" data-frame="5" onchange="updatecondition(5,false,true);LoadPplrWithFont('5',true);" class="pplrcheckbox  pplraddprice" value="Yes" name="properties[Waterproof IP67 Rated]"> Add Items <span class="pplr_option_price_span"></span> </label></div>
-          <div class="pplr-wrapper  pplr-checkbox  pplr-waterproof-ip67-rated" data-main="5"><label class="oindexlabel">Add Ons</label><label class="pplrlabel" onclick="pplr_unfold(this)"> <input data-pplr_price="3000" data-pplr_price-type="2" type="checkbox" data-frame="5" onchange="updatecondition(5,false,true);LoadPplrWithFont('5',true);" class="pplrcheckbox  pplraddprice" value="Yes" name="properties[Add Items]"> Add Items <span class="pplr_option_price_span"></span> </label></div>
-          <div class="pplr-wrapper  pplr-checkbox  pplr-waterproof-ip67-rated" data-main="5"><label class="oindexlabel">Add Ons</label><label class="pplrlabel" onclick="pplr_unfold(this)"> <input data-pplr_price="3000" data-pplr_price-type="2" type="checkbox" data-frame="5" onchange="updatecondition(5,false,true);LoadPplrWithFont('5',true);" class="pplrcheckbox  pplraddprice" value="Yes" name="properties[Add Items]"> Add Items <span class="pplr_option_price_span"></span> </label></div>
+          <div class="pplr-wrapper  pplr-checkbox  pplr-waterproof-ip67-rated">
+            <label class="oindexlabel">Add Ons</label>
+            <label class="pplrlabel" > 
+              <input  type="checkbox"  class="pplrcheckbox  " value="Yes" > IP67 Waterproof <span class="pplr_option_price_span showPrice py-1 d-block">₹00</span> 
+            </label>
+            </div>
+          <!-- <div class="pplr-wrapper  pplr-checkbox  pplr-waterproof-ip67-rated">
+            <label class="oindexlabel">Add Ons</label><label class="pplrlabel" > 
+              <input  type="checkbox"  class="pplrcheckbox  " value="Yes"> Remote Control <span class="pplr_option_price_span py-1 d-block">₹3000</span> </label>
+            </div>
+          <div class="pplr-wrapper  pplr-checkbox  pplr-waterproof-ip67-rated">
+            <label class="oindexlabel">Add Ons</label><label class="pplrlabel" > 
+              <input  type="checkbox"  class="pplrcheckbox  " value="Yes"> App Control <span class="pplr_option_price_span py-1 d-block">₹3000</span> </label>
+            </div> -->
         </div>
         <!-- <hr class="  mx-lg-5 text-white selected-elem d-none" style="border: 1px solid ; border-radius: 2px; color: white;;">
             <p class=" mx-lg-5 mt-3 text-white  selected-elem d-none"> Choose Custom Size</p> -->
@@ -417,6 +428,7 @@
       </main>
     </aside>
   </main>
+ 
     <script>
       const textArea = document.querySelector('.textarea-neon');
       const sizeSpans = document.querySelectorAll('.pplr-drop-item');
@@ -502,50 +514,6 @@
       <script src="assets/js/customize.js"></script>
     </body>
     <script>
-    $(document).ready(function(){
-    $("#first").click(function(){
-        $(" .selected-elem").show();
-        $(".selected-elem").removeClass("d-none")
-        $("#regular").slideToggle("slow");
-        $("#medium, #large, #x-large, #xxl, #txl, #fxl").hide();
-    });
-    $("#second").click(function(){
-        $(".selected-elem").show();
-        $(".selected-elem").removeClass("d-none")
-        $("#medium").slideToggle("slow");
-        $("#regular, #large, #x-large, #xxl, #txl, #fxl").hide();
-    });
-    $("#third").click(function(){
-        $(".selected-elem").show();
-        $(".selected-elem").removeClass("d-none")
-        $("#large").slideToggle("slow");
-        $("#regular, #medium, #x-large, #xxl, #txl, #fxl").hide();
-    });
-    $("#fourth, .selected-elem").click(function(){
-        $(".selected-elem").show();
-        $(".selected-elem").removeClass("d-none")
-        $("#x-large").slideToggle("slow");
-        $("#regular, #medium, #large, #xxl, #txl, #fxl").hide();
-    });
-    $("#fifth, .selected-elem").click(function(){
-        $(".selected-elem").show();
-        $(".selected-elem").removeClass("d-none")
-        $("#xxl").slideToggle("slow");
-        $("#regular, #medium, #large, #x-large, #txl, #fxl").hide();
-    });
-    $("#sixth, .selected-elem").click(function(){
-        $(".selected-elem").show();
-        $(".selected-elem").removeClass("d-none")
-        $("#txl").slideToggle("slow");
-        $("#regular, #medium, #large, #x-large, #xxl, #fxl").hide();
-    });
-    $("#seventh, .selected-elem").click(function(){
-        $(".selected-elem").show();
-        $(".selected-elem").removeClass("d-none")
-        $("#fxl").slideToggle("slow");
-        $("#regular, #medium, #large, #x-large, #xxl, #txl").hide();
-    });
-});
-
-       </script>
+    
+    </script>
   </html>
