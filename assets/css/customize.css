@@ -665,7 +665,7 @@ input {
   margin: 0 6px;
   position: relative;
 }
-.pplr-waterproof-ip67-rated label.pplrlabel {
+.remote-price label.pplrlabel {
   font-size: 12px;
   background-color: transparent;
   display: block;
@@ -677,7 +677,57 @@ input {
   margin: 0 5px;
   width: 100%;
 }
-.pplr-waterproof-ip67-rated input {
+.remote-price input {
+  width: 13px;
+  height: 13px;
+  z-index: 2;
+  position: absolute;
+  accent-color: #12dd7e;
+  background-color: #000;
+  left: -10px;
+  top: 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+  /* visibility: hidden; */
+}
+.water-proof label.pplrlabel {
+  font-size: 12px;
+  background-color: transparent;
+  display: block;
+  margin: 0;
+  position: relative;
+  border: 2px solid rgba(177, 177, 177, 1);
+  padding: 6px;
+  border-radius: 5px;
+  margin: 0 5px;
+  width: 100%;
+}
+.water-proof input {
+  width: 13px;
+  height: 13px;
+  z-index: 2;
+  position: absolute;
+  accent-color: #12dd7e;
+  background-color: #000;
+  left: -10px;
+  top: 0;
+  transform: translateY(-50%);
+  cursor: pointer;
+  /* visibility: hidden; */
+}
+.app-price label.pplrlabel {
+  font-size: 12px;
+  background-color: transparent;
+  display: block;
+  margin: 0;
+  position: relative;
+  border: 2px solid rgba(177, 177, 177, 1);
+  padding: 6px;
+  border-radius: 5px;
+  margin: 0 5px;
+  width: 100%;
+}
+.app-price input {
   width: 13px;
   height: 13px;
   z-index: 2;

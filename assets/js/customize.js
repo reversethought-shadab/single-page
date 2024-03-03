@@ -160,58 +160,30 @@ document.addEventListener("DOMContentLoaded", function () {
       updatePrice(totalPrice);
     });
   });
-  // Add event listeners to the checkboxes
-  function updatePriceOnCheck(checkbox) {
-    // Get the base price
-    const text = textarea.value; // Assuming 'textarea' is defined elsewhere
-    const basePrice = calculatePrice(text.replace(/\s/g, ""));
 
-    // Get the increment based on the number of checkboxes checked
-    let increment = 0;
+  function updatePriceOnCheck(checkbox) {
+    const textarea = document.querySelector(".textarea-neon"); // Replace with your actual textarea class
+    const basePrice = calculatePrice(textarea.value.replace(/\s/g, ""));
+    console.log("updatePriceOnCheck");
     const checkedCheckboxes = document.querySelectorAll(
       ".pplrcheckbox:checked"
     );
     const numChecked = checkedCheckboxes.length;
 
-    // Calculate the increment based on the number of checked checkboxes
-    switch (numChecked) {
-      case 1:
-        increment = 120;
-        break;
-      case 2:
-        increment = 240;
-        break;
-      case 3:
-        increment = 360;
-        break;
-      case 4:
-        increment = 480;
-        break;
-      case 5:
-        increment = 600;
-        break;
-      case 6:
-        increment = 720;
-        break;
-      case 7:
-        increment = 840;
-        break;
-      default:
-        increment = 0;
-        break;
-    }
+    const increment = numChecked > 0 ? numChecked * 120 : 0;
 
-    // Calculate the total price
     const totalPrice = basePrice + increment;
-
-    // Update the price value with the new total price
     updatePrice(totalPrice); // Assuming 'updatePrice' is defined elsewhere
   }
-  const checkbox = document.querySelector(".pplrcheckbox");
 
-  checkbox.addEventListener("change", function () {
-    // Call the updatePriceOnCheck function when the checkbox state changes
-    updatePriceOnCheck(this);
+  document.addEventListener("DOMContentLoaded", function () {
+    const checkboxes = document.querySelectorAll(".pplrcheckbox");
+
+    checkboxes.forEach(function (checkbox) {
+      checkbox.addEventListener("change", function () {
+        updatePriceOnCheck(this);
+      });
+    });
   });
 
   // fonts preview
