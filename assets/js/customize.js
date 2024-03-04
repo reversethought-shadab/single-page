@@ -150,40 +150,61 @@ document.addEventListener("DOMContentLoaded", function () {
       if (basePrice >= 1200) {
         totalPrice += priceIncrement;
 
-        // Apply additional increments for spans after the active span
         if (activeIndex >= 0 && index > activeIndex) {
           totalPrice += priceIncrement * (index - activeIndex);
         }
       }
-
-      // Update the price value with the new total price
       updatePrice(totalPrice);
     });
   });
-
-  function updatePriceOnCheck(checkbox) {
-    const textarea = document.querySelector(".textarea-neon"); // Replace with your actual textarea class
-    const basePrice = calculatePrice(textarea.value.replace(/\s/g, ""));
-    console.log("updatePriceOnCheck");
-    const checkedCheckboxes = document.querySelectorAll(
-      ".pplrcheckbox:checked"
-    );
-    const numChecked = checkedCheckboxes.length;
-
-    const increment = numChecked > 0 ? numChecked * 120 : 0;
-
+  //  checkbox price
+  function updatePriceOnCheck() {
+    const basePrice = getBasePrice();
+    const increment = getIncrement();
     const totalPrice = basePrice + increment;
-    updatePrice(totalPrice); // Assuming 'updatePrice' is defined elsewhere
+
+    updatePrice(totalPrice);
+  }
+
+  function getBasePrice() {
+    const textarea = document.querySelector(".textarea-neon");
+    return calculatePrice(textarea.value.replace(/\s/g, ""));
+  }
+
+  function getIncrement() {
+    const activeSpan = document.querySelector(".pplr-drop-item.active");
+    const activeId = activeSpan ? activeSpan.id : "";
+    const waterproofCheckbox = document.querySelector("#waterproof");
+    const checkboxValue = waterproofCheckbox.checked
+      ? parseInt(waterproofCheckbox.value)
+      : 0;
+
+    switch (activeId) {
+      case "first":
+        return checkboxValue + 120;
+      case "second":
+        return checkboxValue + 240;
+      case "third":
+        return checkboxValue + 360;
+      case "fourth":
+        return checkboxValue + 480;
+      case "fifth":
+        return checkboxValue + 600;
+      case "sixth":
+        return checkboxValue + 720;
+      case "seventh":
+        return checkboxValue + 840;
+      default:
+        return checkboxValue;
+    }
   }
 
   document.addEventListener("DOMContentLoaded", function () {
-    const checkboxes = document.querySelectorAll(".pplrcheckbox");
-
+    const checkboxes = document.querySelectorAll("#waterproof");
     checkboxes.forEach(function (checkbox) {
-      checkbox.addEventListener("change", function () {
-        updatePriceOnCheck(this);
-      });
+      checkbox.addEventListener("change", updatePriceOnCheck);
     });
+    updatePriceOnCheck();
   });
 
   // fonts preview
