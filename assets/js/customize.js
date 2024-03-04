@@ -64,18 +64,14 @@ document.addEventListener("DOMContentLoaded", function () {
       { length: 54, price: 6000 },
       { length: 57, price: 6300 },
       { length: 60, price: 6600 },
-      // Add more tiers as needed
     ];
     if (length === 0) {
       return 0;
     }
-    // Find the matching price tier for the current length
     const matchingTier = priceTiers.find((tier) => length <= tier.length);
 
     return matchingTier.price;
   }
-
-  // Event listener for size selection
 
   // Event listener for textarea input
   let firstLetterTyped = false;
@@ -91,13 +87,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   sizeSpans.forEach((span, index) => {
     span.addEventListener("click", function () {
-      // Get the id of the clicked span
       const clickedId = this.id;
-
-      // Remove 'active' class from all spans
       sizeSpans.forEach((span) => span.classList.remove("active"));
-
-      // Add 'active' class to the clicked span
       this.classList.add("active");
 
       // Calculate the base price based on the text area value
@@ -112,8 +103,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
       sizeSpans.forEach((span) => span.classList.remove("active"));
-
-      // Add 'active' class to the clicked span
       this.classList.add("active");
       let priceIncrement = 0;
 
@@ -157,7 +146,8 @@ document.addEventListener("DOMContentLoaded", function () {
       updatePrice(totalPrice);
     });
   });
-  //  checkbox price
+  //  checkbox price here addon function
+
   function updatePriceOnCheck() {
     const basePrice = getBasePrice();
     const increment = getIncrement();
@@ -180,18 +170,26 @@ document.addEventListener("DOMContentLoaded", function () {
       : 0;
 
     switch (activeId) {
+      // get whatever price on type and sizes addon checkboxValue to updatePrice
+      // it mean regular
       case "first":
         return checkboxValue + 120;
+      // it mean medium
       case "second":
         return checkboxValue + 240;
+      // it means large
       case "third":
         return checkboxValue + 360;
+      // it means x-large
       case "fourth":
         return checkboxValue + 480;
+      // it means xxl
       case "fifth":
         return checkboxValue + 600;
+      // it means 3xl
       case "sixth":
         return checkboxValue + 720;
+      // it means 4xl
       case "seventh":
         return checkboxValue + 840;
       default:
@@ -206,6 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     updatePriceOnCheck();
   });
+  // end addon function
 
   // fonts preview
   function applyFont(selectedFont) {

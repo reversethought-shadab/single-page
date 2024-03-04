@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Size and Addons Selection</title>
+<style>
+    /* Style for radio buttons */
+    .size-selector label {
+        display: inline-block;
+        margin-right: 10px;
+    }
+    /* Style for addons radio buttons */
+    .addons-selector label {
+        display: block;
+        margin-top: 5px;
+    }
+    /* Style for price display */
+    #price {
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    .size-selector input[type="radio"],
+    .addons-selector input[type="radio"] {
+        display: none;
+    }
+    
+    /* Style for custom radio button */
+    .size-selector label,
+    .addons-selector label {
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+        padding: 10px;
+        font-size: 16px;
+    }
+    
+    /* Style for custom radio button dot */
+    .size-selector label::before,
+    .addons-selector label::before {
+        content: "";
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        border-radius: 4px;
+        border: 2px solid #ccc;
+        position: absolute;
+        left: 0;
+        top: 2px;
+    }
+</style>
+</head>
+<body>
+
+<div class="size-selector">
+    <label for="radio1">
+        <input type="radio" name="size" id="radio1" value="regular" onchange="updatePrice()" checked> 
+        Regular <br /><br /> Length: 12" <br />Height 0.8 
+    </label>
+    <label for="radio2">
+        <input type="radio" name="size" id="radio2" value="medium" onchange="updatePrice()"> 
+        Medium <br /><br /> Length: 12" <br />Height 0.8 
+    </label>
+    <label for="radio3">
+        <input type="radio" name="size" id="radio3" value="large" onchange="updatePrice()"> 
+        Large <br /><br /> Length: 12" <br />Height 0.8 
+    </label>
+</div>
+
+<div class="addons-selector">
+    <span>Addons:</span>
+    <label for="waterproof">
+        <input type="radio" name="addon" id="waterproof" value="waterproof" onchange="updatePrice()"> IP67 Waterproof
+    </label>
+    <label for="remotecontrol">
+        <input type="radio" name="addon" id="remotecontrol" value="remotecontrol" onchange="updatePrice()"> Remote Control <br /> ₹ 1200
+    </label>
+</div>
+
+<div id="price">Price: $10</div>
+
+<script>
+function updatePrice() {
+    var basePrice = 0;
+    var addonPrice = 0;
+    var radios = document.getElementsByName('size');
+    var addonsRadios = document.getElementsByName('addon');
+    
+    // Calculate base price based on selected size
+    for (var i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+            if (radios[i].value === 'regular') {
+                basePrice = 1200;
+            } else if (radios[i].value === 'medium') {
+                basePrice = 1500;
+            } else if (radios[i].value === 'large') {
+                basePrice = 2100;
+            }
+            break;
+        }
+    }
+    
+    // Calculate addon price
+    for (var i = 0; i < addonsRadios.length; i++) {
+        if (addonsRadios[i].checked) {
+            if (addonsRadios[i].value === 'waterproof') {
+                if (radios == 'medium'){
+
+                    addonPrice = 120;
+                }
+                else if(radios == 'large'){
+                    addonPrice = 360;
+                }
+                else{
+                    addonPrice = 120;
+                }
+                
+            } else if (addonsRadios[i].value === 'remotecontrol') {
+                addonPrice = 1200;
+            }
+            break;
+        }
+    }
+    
+    // Update total price
+    var totalPrice = basePrice + addonPrice;
+    document.getElementById('price').innerText = 'Price: $' + totalPrice;
+}
+</script>
+
+</body>
+</html>
