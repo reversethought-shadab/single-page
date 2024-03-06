@@ -467,7 +467,21 @@
       } else if (textLength <= 17) {
         activeSpan = sizeSpans[4];
         enableSizeSpansFromIndex(4);
-      }else {
+      }
+      else if (textLength <= 20) {
+        activeSpan = sizeSpans[5];
+        enableSizeSpansFromIndex(5);
+      }
+      else if (textLength <= 23) {
+        activeSpan = sizeSpans[6];
+        enableSizeSpansFromIndex(6);
+      }
+      else if (textLength <= 26) {
+        activeSpan = sizeSpans[7];
+        enableSizeSpansFromIndex(7);
+      }
+      
+      else {
         const activeIndex = Math.floor((textLength - 4) / 3);
         activeSpan = sizeSpans[activeIndex];
         enableSizeSpansFromIndex(activeIndex);
