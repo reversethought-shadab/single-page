@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const previewText = document.querySelector("#Preview-text");
   const priceValue = document.querySelector(".price-value");
   const priceItem = document.querySelector(".price-item");
+  const addOnWaterproofPrice = document.querySelector(".showPrice");
 
   function updatePrice(price) {
     if (priceValue && priceItem) {
@@ -64,10 +65,12 @@ document.addEventListener("DOMContentLoaded", function () {
       { length: 54, price: 6000 },
       { length: 57, price: 6300 },
       { length: 60, price: 6600 },
+      // Add more tiers as needed
     ];
     if (length === 0) {
       return 0;
     }
+    // Find the matching price tier for the current length
     const matchingTier = priceTiers.find((tier) => length <= tier.length);
 
     return matchingTier.price;
@@ -77,76 +80,310 @@ document.addEventListener("DOMContentLoaded", function () {
   let firstLetterTyped = false;
   textarea.addEventListener("input", function (event) {
     const text = event.target.value;
+    // console.log(text.trim().length)
     const price = calculatePrice(text.replace(/\s/g, ""));
     updatePrice(price);
     if (!firstLetterTyped && text.trim().length > 0) {
       firstLetterTyped = true;
     }
+
+    if (text.trim().length <= 5) {
+      addOnWaterproofPrice.innerHTML = "₹ 120";
+    } else if (text.trim().length > 5 && text.trim().length <= 8) {
+      addOnWaterproofPrice.innerHTML = "₹ 240";
+    } else if (text.trim().length > 8 && text.trim().length <= 11) {
+      addOnWaterproofPrice.innerHTML = "₹ 360";
+    } else if (text.trim().length > 11 && text.trim().length <= 14) {
+      addOnWaterproofPrice.innerHTML = "₹ 480";
+    } else if (text.trim().length > 14 && text.trim().length <= 17) {
+      addOnWaterproofPrice.innerHTML = "₹ 600";
+    } else if (text.trim().length > 17 && text.trim().length <= 21) {
+      addOnWaterproofPrice.innerHTML = "₹ 720";
+    } else if (text.trim().length > 21 && text.trim().length <= 24) {
+      addOnWaterproofPrice.innerHTML = "₹ 840";
+    } else {
+    }
   });
+
   const sizeSpans = document.querySelectorAll(".pplr-drop-item");
 
+  // Function to disable a span
+  function disableSpan(span) {
+    span.classList.add("disabled");
+    span.removeEventListener("click", spanClickHandler); // Remove the click event listener
+  }
+
+  // Function to enable a span
+  function enableSpan(span) {
+    span.classList.remove("disabled");
+    span.addEventListener("click", spanClickHandler); // Add back the click event listener
+  }
+
+  // Handler for span click event
+  function spanClickHandler(index) {
+    // Get the id of the clicked span
+    const clickedId = this.id;
+
+    // Remove 'active' class from all spans
+    sizeSpans.forEach((span) => span.classList.remove("active"));
+
+    // Add 'active' class to the clicked span
+    this.classList.add("active");
+
+    // Calculate the base price based on the text area value
+    const text = textarea.value;
+    const basePrice = calculatePrice(text.replace(/\s/g, ""));
+
+    // Initialize the price increment
+    let activeIndex = -1;
+    sizeSpans.forEach((span, index) => {
+      if (span.classList.contains("active")) {
+        activeIndex = index;
+      }
+    });
+
+    // Add 'active' class to the clicked span
+    this.classList.add("active");
+    let priceIncrement = 0;
+
+    // Determine the price increment based on the clicked span
+    switch (clickedId) {
+      case "first":
+        priceIncrement = 0;
+        break;
+      case "second":
+        priceIncrement = 300;
+        break;
+      case "third":
+        priceIncrement = 900;
+        break;
+      case "fourth":
+        priceIncrement = 1500;
+        break;
+      case "fifth":
+        priceIncrement = 2100;
+        break;
+      case "sixth":
+        priceIncrement = 2700;
+        break;
+      case "seventh":
+        priceIncrement = 3300;
+        break;
+      default:
+        priceIncrement = 0;
+        break;
+    }
+
+    // Calculate the total price
+    let totalPrice = basePrice;
+    if (basePrice >= 1200) {
+      totalPrice += priceIncrement;
+
+      if (activeIndex >= 0 && index > activeIndex) {
+        totalPrice += priceIncrement * (index - activeIndex);
+      }
+    }
+    updatePrice(totalPrice);
+  }
+
   sizeSpans.forEach((span, index) => {
-    span.addEventListener("click", function () {
-      const clickedId = this.id;
-      sizeSpans.forEach((span) => span.classList.remove("active"));
-      this.classList.add("active");
+    // Add the click event listener
+    span.addEventListener("click", spanClickHandler);
+  });
 
-      // Calculate the base price based on the text area value
-      const text = textarea.value;
-      const basePrice = calculatePrice(text.replace(/\s/g, ""));
+  const checkboxClick = document.querySelectorAll(".pplrcheckbox");
+  // Function to check if all checkboxes are unchecked
+  function allCheckboxesUnchecked(activeIndex) {
+    for (let i = activeIndex + 1; i < sizeSpans.length; i++) {
+      if (!sizeSpans[i].classList.contains("disabled")) {
+        return false;
+      }
+    }
+    return true;
+  }
 
-      // Initialize the price increment
-      let activeIndex = -1;
-      sizeSpans.forEach((span, idx) => {
-        if (span.classList.contains("active")) {
-          activeIndex = idx;
+  checkboxClick.forEach((checkbox, index) => {
+    checkbox.addEventListener("change", function (e) {
+      const checked = this.checked;
+      const activeSpan = document.querySelector(".pplr-drop-item.active");
+      const activeIndex = Array.from(sizeSpans).indexOf(activeSpan);
+
+      if (checked && allCheckboxesUnchecked()) {
+        for (let i = activeIndex + 1; i < sizeSpans.length; i++) {
+          disableSpan(sizeSpans[i]);
         }
-      });
-      sizeSpans.forEach((span) => span.classList.remove("active"));
-      this.classList.add("active");
-      let priceIncrement = 0;
-
-      // Determine the price increment based on the clicked span
-      switch (clickedId) {
-        case "first":
-          priceIncrement = 0;
-          break;
-        case "second":
-          priceIncrement = 300;
-          break;
-        case "third":
-          priceIncrement = 900;
-          break;
-        case "fourth":
-          priceIncrement = 1500;
-          break;
-        case "fifth":
-          priceIncrement = 2100;
-          break;
-        case "sixth":
-          priceIncrement = 2700;
-          break;
-        case "seventh":
-          priceIncrement = 3300;
-          break;
-        default:
-          priceIncrement = 0;
-          break;
+      } else if (!checked && allCheckboxesUnchecked()) {
+        for (let i = activeIndex + 1; i < sizeSpans.length; i++) {
+          enableSpan(sizeSpans[i]);
+        }
+      } else {
       }
 
-      // Calculate the total price
-      let totalPrice = basePrice;
-      if (basePrice >= 1200) {
-        totalPrice += priceIncrement;
+      //   if (!checked && allCheckboxesUnchecked()) {
+      //     for (let i = activeIndex + 1; i < sizeSpans.length; i++) {
+      //         enableSpan(sizeSpans[i]);
+      //     }
+      // } else if (checked && allCheckboxesUnchecked()) {
+      //     for (let i = activeIndex + 1; i < sizeSpans.length; i++) {
+      //         disableSpan(sizeSpans[i]);
+      //     }
+      // }
+      // else{
+      //   disableSpan(sizeSpans[i]);
+      // }
+      let updatedTotalPrice = document.querySelector(".price-item").innerHTML;
+      let updatedTotalPriceWithoutSign = Number(
+        updatedTotalPrice.replace(/[^0-9]/g, "")
+      );
+      let checkboxId = this.id;
+      //selected size
+      const selectedFontSize = document.querySelector(
+        ".pplr-drop-item.active"
+      ).id;
+      console.log(selectedFontSize);
 
-        if (activeIndex >= 0 && index > activeIndex) {
-          totalPrice += priceIncrement * (index - activeIndex);
+      if (e.currentTarget.checked) {
+        switch (e.currentTarget.id) {
+          case "waterproof":
+            if (selectedFontSize === "second") {
+              console.log(
+                "Water Proof Print",
+                updatedTotalPriceWithoutSign + 240
+              );
+              document.querySelector(".price-item").innerHTML =
+                "₹" + (updatedTotalPriceWithoutSign + 240);
+              addOnWaterproofPrice.innerHTML = "₹240";
+            } else if (selectedFontSize === "third") {
+              console.log(
+                "Water Proof Print",
+                updatedTotalPriceWithoutSign + 360
+              );
+              document.querySelector(".price-item").innerHTML =
+                "₹" + (updatedTotalPriceWithoutSign + 360);
+            } else if (selectedFontSize === "fourth") {
+              console.log(
+                "Water Proof Print",
+                updatedTotalPriceWithoutSign + 480
+              );
+              document.querySelector(".price-item").innerHTML =
+                "₹" + (updatedTotalPriceWithoutSign + 480);
+            } else if (selectedFontSize === "fifth") {
+              console.log(
+                "Water Proof Print",
+                updatedTotalPriceWithoutSign + 600
+              );
+              document.querySelector(".price-item").innerHTML =
+                "₹" + (updatedTotalPriceWithoutSign + 600);
+            } else if (selectedFontSize === "sixth") {
+              console.log(
+                "Water Proof Print",
+                updatedTotalPriceWithoutSign + 720
+              );
+              document.querySelector(".price-item").innerHTML =
+                "₹" + (updatedTotalPriceWithoutSign + 720);
+            } else if (selectedFontSize === "seventh") {
+              console.log(
+                "Water Proof Print",
+                updatedTotalPriceWithoutSign + 840
+              );
+              document.querySelector(".price-item").innerHTML =
+                "₹" + (updatedTotalPriceWithoutSign + 840);
+            } else {
+              console.log(
+                "Water Proof Print",
+                updatedTotalPriceWithoutSign + 120
+              );
+              document.querySelector(".price-item").innerHTML =
+                "₹" + (updatedTotalPriceWithoutSign + 120);
+              addOnWaterproofPrice.innerHTML = "₹120";
+            }
+            // console.log("Water Proof Print", (updatedTotalPriceWithoutSign + 120));
+            // document.querySelector(".price-item").innerHTML = "₹" + (updatedTotalPriceWithoutSign + 120);
+            break;
+          case "remotecontrol":
+            console.log(
+              "Remote Control Print",
+              updatedTotalPriceWithoutSign + 1200
+            );
+            document.querySelector(".price-item").innerHTML =
+              "₹" + (updatedTotalPriceWithoutSign + 1200);
+            break;
+          case "appcontrol":
+            console.log(
+              "App Control Print",
+              updatedTotalPriceWithoutSign + 800
+            );
+            document.querySelector(".price-item").innerHTML =
+              "₹" + (updatedTotalPriceWithoutSign + 800);
+            break;
+        }
+      } else {
+        switch (e.currentTarget.id) {
+          case "waterproof":
+            if (selectedFontSize === "second") {
+              console.log(
+                "Water Proof Print",
+                updatedTotalPriceWithoutSign - 240
+              );
+              document.querySelector(".price-item").innerHTML =
+                "₹" + (updatedTotalPriceWithoutSign - 240);
+            } else if (selectedFontSize === "third") {
+              console.log(
+                "Water Proof Print",
+                updatedTotalPriceWithoutSign - 360
+              );
+              document.querySelector(".price-item").innerHTML =
+                "₹" + (updatedTotalPriceWithoutSign - 360);
+            } else if (selectedFontSize === "fourth") {
+              console.log(
+                "Water Proof Print",
+                updatedTotalPriceWithoutSign - 480
+              );
+              document.querySelector(".price-item").innerHTML =
+                "₹" + (updatedTotalPriceWithoutSign - 480);
+            } else if (selectedFontSize === "fifth") {
+              console.log(
+                "Water Proof Print",
+                updatedTotalPriceWithoutSign - 600
+              );
+              document.querySelector(".price-item").innerHTML =
+                "₹" + (updatedTotalPriceWithoutSign - 600);
+            } else if (selectedFontSize === "sixth") {
+              console.log(
+                "Water Proof Print",
+                updatedTotalPriceWithoutSign - 720
+              );
+              document.querySelector(".price-item").innerHTML =
+                "₹" + (updatedTotalPriceWithoutSign - 720);
+            } else if (selectedFontSize === "seventh") {
+              console.log(
+                "Water Proof Print",
+                updatedTotalPriceWithoutSign - 840
+              );
+              document.querySelector(".price-item").innerHTML =
+                "₹" + (updatedTotalPriceWithoutSign - 840);
+            } else {
+              console.log(
+                "Water Proof Print",
+                updatedTotalPriceWithoutSign + 120
+              );
+              document.querySelector(".price-item").innerHTML =
+                "₹" + (updatedTotalPriceWithoutSign - 120);
+            }
+            // document.querySelector(".price-item").innerHTML = "₹" + (updatedTotalPriceWithoutSign - 120);
+            break;
+          case "remotecontrol":
+            document.querySelector(".price-item").innerHTML =
+              "₹" + (updatedTotalPriceWithoutSign - 1200);
+            break;
+          case "appcontrol":
+            document.querySelector(".price-item").innerHTML =
+              "₹" + (updatedTotalPriceWithoutSign - 800);
+            break;
         }
       }
-      updatePrice(totalPrice);
     });
   });
-  //  checkbox price here addon function
 
   function updatePriceOnCheck() {
     const basePrice = getBasePrice();
@@ -170,26 +407,18 @@ document.addEventListener("DOMContentLoaded", function () {
       : 0;
 
     switch (activeId) {
-      // get whatever price on type and sizes addon checkboxValue to updatePrice
-      // it mean regular
       case "first":
         return checkboxValue + 120;
-      // it mean medium
       case "second":
         return checkboxValue + 240;
-      // it means large
       case "third":
         return checkboxValue + 360;
-      // it means x-large
       case "fourth":
         return checkboxValue + 480;
-      // it means xxl
       case "fifth":
         return checkboxValue + 600;
-      // it means 3xl
       case "sixth":
         return checkboxValue + 720;
-      // it means 4xl
       case "seventh":
         return checkboxValue + 840;
       default:
@@ -197,14 +426,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const checkboxes = document.querySelectorAll("#waterproof");
-    checkboxes.forEach(function (checkbox) {
-      checkbox.addEventListener("change", updatePriceOnCheck);
-    });
-    updatePriceOnCheck();
-  });
-  // end addon function
+  // document.addEventListener("DOMContentLoaded", function () {
+  //   const checkboxes = document.querySelectorAll("#waterproof");
+  //   checkboxes.forEach(function (checkbox) {
+  //     checkbox.addEventListener("change", updatePriceOnCheck);
+  //   });
+  //   updatePriceOnCheck();
+  // });
 
   // fonts preview
   function applyFont(selectedFont) {
