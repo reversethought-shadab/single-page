@@ -368,7 +368,6 @@ body.show-sidebar-cart #sidebar-cart {
     background-color: #12dd7e;
   }
 .preview-full{
-  background-image: url(../bg.avif);
   background-color: #010a01;
   height: 550px;
   background-position:bottom;
@@ -378,14 +377,16 @@ body.show-sidebar-cart #sidebar-cart {
   border-radius: 10px;
 }
 .preview-item{
+  background-image: url("../bg.avif");
   background-color: #010a01;
   background-position:bottom;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
-  background-image: url(../bg.avif);
+  height: 200px;
 
 }
+
 .preview-item>.neonText{
 position: absolute;
 top: 30%;
@@ -406,6 +407,79 @@ font-size: 1rem !important;
   /* border: 1px solid rgba( 255, 255, 255, 0.18 ); */
   z-index: 0;
 }
+.slider-controls {
+  display: flex; 
+  justify-content: space-between; 
+  margin-top: 10px; 
+}
+
+.btn {
+  padding: 10px 20px; 
+  border: 1px solid #000000;
+  border-radius: 50px;
+  cursor: pointer;
+  background-color: #fff; 
+  transition: background-color 0.2s ease-in-out; 
+}
+.btn:hover {
+  background-color: #eee; 
+}
+
+.ri-arrow-right-fill {
+  font-size: 18px; 
+  color: #333;
+  margin-left: 5px; 
+}
+.ri-arrow-left-fill {
+  font-size: 18px; 
+  color: #333; 
+  margin-right: 5px;
+}
+.image-container {
+  width: 100%; 
+  position: relative;
+}
+
+.slide-overlay {
+  position: absolute; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; 
+  background-color: rgba(0, 0, 0, 0.783); 
+  z-index: 1;
+}
+.slide {
+  position: absolute;
+  top: 0;
+  border-radius: 23px;
+  left: 0;
+  width: 100%; 
+  height: 550px; 
+  opacity: 0; 
+  transition: opacity 0.5s ease-in-out; 
+  object-fit: cover;
+  object-position: center;
+}
+.slide.active {
+  opacity: 0.4; 
+}
+button.btn.prev-btn {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  z-index: 1;
+  color: var(--clr-bg);
+  background: var(--clr-neon);
+}
+button.btn.next-btn {
+  position: absolute;
+  top: 105%;
+  right: 0;
+  z-index: 1;
+  color: var(--clr-bg);
+  background: var(--clr-neon);
+}
 
 h1.neonText {
       font-size: 3rem;
@@ -417,7 +491,7 @@ h1.neonText {
       width: 100%;
     overflow-wrap: anywhere;
     padding: 0 46px;
-      top: 20%;
+      top: 28%;
       z-index: 99;
       font-family:"Brittanysignature" ;
       left: 50%;

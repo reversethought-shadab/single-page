@@ -534,6 +534,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (previewFull && modalBody) {
       const previewClone = previewFull.cloneNode(true);
+      const unwantedElements = previewClone.querySelectorAll(
+        " .slider-controls button"
+      );
+      unwantedElements.forEach((element) => element.remove());
       modalBody.innerHTML = "";
       modalBody.appendChild(previewClone);
     }
@@ -555,9 +559,13 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
     const previewClone = previewFull.cloneNode(true);
+    const unwantedElements = previewClone.querySelectorAll(".slider-controls ");
+    unwantedElements.forEach((element) => element.remove());
+    // previewClone.querySelector(".image-container").remove();
     previewClone.classList.remove("preview-full");
-    previewClone.style.height = "200px";
+    previewClone.style.height = "180px";
     previewClone.style.width = "250px";
+
     cartItem.innerHTML = "";
     cartItem.appendChild(previewClone);
 
