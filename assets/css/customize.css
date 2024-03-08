@@ -1000,8 +1000,8 @@ input, textarea, select, .disclosure__toggle {
     padding: 7px 9px;
 
 }
-#f-right{
-  margin-top: 20px;
+#f-right {
+  margin-top: 13vw;
 }
   }
 
@@ -1018,6 +1018,9 @@ input, textarea, select, .disclosure__toggle {
       width: 100% !important;
       border-radius: 5px;
       border: 2px solid rgba(177, 177, 177, 1);
+  }
+  #f-right {
+    margin-top: 17vw;
   }
   .pplr-waterproof-ip67-rated label.pplrlabel {
     font-size: 12px;
@@ -1050,4 +1053,10 @@ input, textarea, select, .disclosure__toggle {
   .size-wrapper {
     grid-template-columns: repeat(2, 1fr) !important;
   }
+  }
+
+  @media only screen and (max-width: 400px){
+    #f-right {
+      margin-top: 30vw;
+    }
   }
